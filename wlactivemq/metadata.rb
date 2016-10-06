@@ -6,8 +6,4 @@ description 'Installs/Configures wlactivemq'
 long_description 'Installs/Configures wlactivemq'
 version          "0.1.0"
 
-%w{ubuntu debian redhat centos}.each do |os|
-  supports os
-end
-
 depends 'java', '~> 1.42.0'
