@@ -6,4 +6,4 @@ description 'Installs/Configures wlactivemq'
 long_description 'Installs/Configures wlactivemq'
 version          "0.1.0"
 
-depends 'java', '~> 1.42.0'
+depends 'java_se', '~> 8.102.1'
