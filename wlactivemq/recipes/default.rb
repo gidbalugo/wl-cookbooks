@@ -45,7 +45,8 @@ template "activemq.xml" do
 end
 
 service "activemq" do
-  action :start
+  supports  :restart => true, :status => true
+  action [:enable, :start]
 end
 
 # I DON'T UNDERSTAND WHAT IS THE USE OF THIS :D
