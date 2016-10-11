@@ -46,7 +46,7 @@ end
 
 service "activemq" do
   supports  :restart => true, :status => true
-  action [:start, :enable]
+  action [:enable, :start]
 end
 
 # I DON'T UNDERSTAND WHAT IS THE USE OF THIS :D
