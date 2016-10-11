@@ -1,0 +1,9 @@
+DEPENDENCIES
+  wl-cookbooks
+    path: .
+    metadata: true
+
+GRAPH
+  java_se (8.102.1)
+  wl-cookbooks (0.1.0)
+    java_se (~> 8.102.1)
