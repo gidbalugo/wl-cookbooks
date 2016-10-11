@@ -4,9 +4,6 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-
-include_recipe "java_se"
-
 tmp = Chef::Config[:file_cache_path]
 version = node['zookeeper']['version']
 mirror = node['zookeeper']['mirror']
