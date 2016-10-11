@@ -54,5 +54,4 @@ bash 'run_zookeeper' do
 		#{zookeeper_home}/bin/zkServer.sh start
 		EOH
 	user "root"
-	not_if { ::File.exists?("#{zookeeper_home}/bin/zkServer.sh") }
 end
