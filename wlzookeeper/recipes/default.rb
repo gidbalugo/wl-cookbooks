@@ -37,20 +37,18 @@ ruby_block "update myid based on private ip" do
         #Chef::Resource::RubyBlock.send(:include, Chef::Mixin::ShellOut)  
         output = `hostname -I`
         if output == node['zookeeper']['private1']
-        	node.set['zookeeper']['myid'] = node['zookeeper']['id1']
+        	zookeeper_id = node['zookeeper']['id1']
 
         elsif output == node['zookeeper']['private2']
-        	node.set['zookeeper']['myid'] = node['zookeeper']['id2']
+        	zookeeper_id = node['zookeeper']['id2']
 
         elsif output == node['zookeeper']['private3']
-        	node.set['zookeeper']['myid'] = node['zookeeper']['id3']
+        	zookeeper_id = node['zookeeper']['id3']
 
         end
     end
     action :create
 end
-
-zookeeper_id = node['zookeeper']['myid']
 
 file "#{zookeeper_dataDir}/myid" do
 	content "#{zookeeper_id}"
