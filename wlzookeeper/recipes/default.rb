@@ -7,7 +7,7 @@
 tmp = Chef::Config[:file_cache_path]
 version = node['zookeeper']['version']
 mirror = node['zookeeper']['mirror']
-zookeeper_id = node['zookeeper']['id']
+
 zookeeper_dataDir = node['zookeeper']['dataDir']
 zookeeper_home = "#{node['zookeeper']['home']}/zookeeper-#{version}"
 
@@ -30,6 +30,27 @@ directory "/var/zookeeper" do
 	mode '0755'
 	action :create
 end
+
+ruby_block "update myid based on private ip" do
+    block do
+        #tricky way to load this Chef::Mixin::ShellOut utilities
+        #Chef::Resource::RubyBlock.send(:include, Chef::Mixin::ShellOut)  
+        output = `hostname -I`
+        if output == node['zookeeper']['private1']
+        	node.set['zookeeper']['myid'] = node['zookeeper']['id1']
+
+        elsif output == node['zookeeper']['private2']
+        	node.set['zookeeper']['myid'] = node['zookeeper']['id2']
+
+        elsif output == node['zookeeper']['private3']
+        	node.set['zookeeper']['myid'] = node['zookeeper']['id3']
+
+        end
+    end
+    action :create
+end
+
+zookeeper_id = node['zookeeper']['myid']
 
 file "#{zookeeper_dataDir}/myid" do
 	content "#{zookeeper_id}"
