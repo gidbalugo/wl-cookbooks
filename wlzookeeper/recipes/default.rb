@@ -50,6 +50,8 @@ ruby_block "update myid based on private ip" do
     action :create
 end
 
+zookeeper_id = node['zookeeper']['myid']
+
 file "#{zookeeper_dataDir}/myid" do
 	content "#{zookeeper_id}"
 	mode "0755"
