@@ -11,9 +11,14 @@ dataDir=/var/zookeeper
 # the port at which the clients will connect
 clientPort=2181
 
-server.<%= @node[:zookeeper][:id1] %>=<%= @node[:zookeeper][:address1] %>:2888:3888 	#private IP 172.31.38.64
-server.<%= @node[:zookeeper][:id2] %>=<%= @node[:zookeeper][:address2] %>:2888:3888 	#private IP 172.31.36.224
-server.<%= @node[:zookeeper][:id3] %>=<%= @node[:zookeeper][:address3] %>:2888:3888		#private IP 172.31.47.51
+#private IP 172.31.38.64
+server.<%= @node[:zookeeper][:id1] %>=<%= @node[:zookeeper][:address1] %>:2888:3888
+
+#private IP 172.31.36.224
+server.<%= @node[:zookeeper][:id2] %>=<%= @node[:zookeeper][:address2] %>:2888:3888
+
+#private IP 172.31.47.51
+server.<%= @node[:zookeeper][:id3] %>=<%= @node[:zookeeper][:address3] %>:2888:3888
 
 #autopurge.snapRetainCount=3
 # Purge task interval in hours
