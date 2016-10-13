@@ -84,4 +84,5 @@ bash 'run_zookeeper' do
 		#{zookeeper_home}/bin/zkServer.sh start
 		EOH
 	user "root"
+	action [:run, :create] 
 end
