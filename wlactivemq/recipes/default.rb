@@ -37,6 +37,21 @@ link "/etc/init.d/activemq" do
   to "#{activemq_home}/bin/linux-#{arch}/activemq"
 end
 
+
+node['activemq']['hostname']
+
+ruby_block "retrieve hostname of host activemq" do
+    block do
+        #tricky way to load this Chef::Mixin::ShellOut utilities
+        #Chef::Resource::RubyBlock.send(:include, Chef::Mixin::ShellOut)  
+        output = `hostname -I`
+        ouputResult = output.to_s.strip
+        node.override['activemq']['hostname'] = ouputResult
+    end
+
+    action :create
+end
+
 template "activemq.xml" do
   source "activemq.xml.erb"
   mode "0755"
