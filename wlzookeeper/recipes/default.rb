@@ -42,15 +42,15 @@ ruby_block "update myid based on private ip" do
 		ouputResult = output.to_s.strip
 
 		if ouputResult == "#{node['zookeeper']['private1']}".to_s.strip
-			zookeeper_id = node['zookeeper']['id1']
+			node.override['zookeeper']['myid'] = "#{node['zookeeper']['id1']}"
 			node.override['zookeeper']['config']['address1'] = "0.0.0.0"
 
 		elsif ouputResult == "#{node['zookeeper']['private2']}".to_s.strip
-			zookeeper_id = node['zookeeper']['id2']
+			node.override['zookeeper']['myid'] = "#{node['zookeeper']['id2']}"
 			node.override['zookeeper']['config']['address2'] = "0.0.0.0"
 
 		elsif ouputResult == "#{node['zookeeper']['private3']}".to_s.strip
-			zookeeper_id = node['zookeeper']['id3']
+			node.override['zookeeper']['myid'] = "#{node['zookeeper']['id3']}"
 			node.override['zookeeper']['config']['address3'] = "0.0.0.0"
 
 		end
@@ -59,9 +59,11 @@ ruby_block "update myid based on private ip" do
     action :create
 end
 
-file "#{zookeeper_dataDir}/myid" do
-	content "#{zookeeper_id}"
+#update server id
+template "myid" do
+	source "myid.erb"
 	mode "0755"
+	path "#{zookeeper_dataDir}/myid"
 	action :create
 end
 

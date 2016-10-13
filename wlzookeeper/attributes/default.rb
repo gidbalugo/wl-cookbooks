@@ -26,7 +26,7 @@ default['zookeeper']['private3'] 			= "172.31.42.157"
 default['zookeeper']['instance']['address3']= "54.235.4.26"
 default['zookeeper']['config']['address3']  = "54.235.4.26"
 
-#default myid is. this is updated by recipe depending on private ip
+#default myid for config is 1 or whatever
 default['zookeeper']['myid'] = "1"
 
 #default['zookeeper']['wrapper']['max_memory'] = "512"
