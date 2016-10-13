@@ -8,19 +8,23 @@ default['zookeeper']['version'] = "3.4.9"
 default['zookeeper']['home']  	= "/opt"
 default['zookeeper']['dataDir'] = "/var/zookeeper"
 
-#zookeeper ids - values do not necessarily comply with id-X
+#zookeeper ids - values do not necessarily comply with idX
 #zookeeper address are from the created instance in aws
-default['zookeeper']['id1'] 	  = "1"
-default['zookeeper']['address1'] = "54.210.67.63"
-default['zookeeper']['private1'] = "172.31.38.64"
+default['zookeeper']['id1'] 	  			= "1"
+default['zookeeper']['private1'] 			= "172.31.36.128"
+default['zookeeper']['instance']['address1']= "54.235.3.213"
+default['zookeeper']['config']['address1'] 	= "54.235.3.213"
 
-default['zookeeper']['id2']	  = "2"
-default['zookeeper']['address2'] = "54.196.56.137"
-default['zookeeper']['private2'] = "172.31.36.224"
 
-default['zookeeper']['id3'] 	  = "3"
-default['zookeeper']['address3'] = "54.209.223.245"
-default['zookeeper']['private3'] = "172.31.47.51"
+default['zookeeper']['id2']	  				= "2"
+default['zookeeper']['private2'] 			= "172.31.38.216"
+default['zookeeper']['instance']['address2']= "52.23.211.26"
+default['zookeeper']['config']['address2'] 	= "52.23.211.26"
+
+default['zookeeper']['id3'] 	  			= "3"
+default['zookeeper']['private3'] 			= "172.31.42.157"
+default['zookeeper']['instance']['address3']= "54.235.4.26"
+default['zookeeper']['config']['address3']  = "54.235.4.26"
 
 #default myid is. this is updated by recipe depending on private ip
 default['zookeeper']['myid'] = "1"
