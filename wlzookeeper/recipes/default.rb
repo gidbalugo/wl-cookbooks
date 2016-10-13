@@ -31,6 +31,9 @@ directory "/var/zookeeper" do
 	action :create
 end
 
+#default to 1
+zookeeper_id = "1"
+
 ruby_block "update myid based on private ip" do
     block do
         #tricky way to load this Chef::Mixin::ShellOut utilities
