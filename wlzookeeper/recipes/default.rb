@@ -36,21 +36,25 @@ ruby_block "update myid based on private ip" do
         #tricky way to load this Chef::Mixin::ShellOut utilities
         #Chef::Resource::RubyBlock.send(:include, Chef::Mixin::ShellOut)  
         output = `hostname -I`
-        if output == node['zookeeper']['private1']
-        	zookeeper_id = node['zookeeper']['id1']
+		ouputResult = output.to_s.strip
 
-        elsif output == node['zookeeper']['private2']
-        	zookeeper_id = node['zookeeper']['id2']
+		if ouputResult == "#{node['zookeeper']['private1']}".to_s.strip
+			zookeeper_id = node['zookeeper']['id1']
+			node.override['zookeeper']['config']['address1'] = "0.0.0.0"
 
-        elsif output == node['zookeeper']['private3']
-        	zookeeper_id = node['zookeeper']['id3']
+		elsif ouputResult == "#{node['zookeeper']['private2']}".to_s.strip
+			zookeeper_id = node['zookeeper']['id2']
+			node.override['zookeeper']['config']['address2'] = "0.0.0.0"
 
-        end
+		elsif ouputResult == "#{node['zookeeper']['private3']}".to_s.strip
+			zookeeper_id = node['zookeeper']['id3']
+			node.override['zookeeper']['config']['address3'] = "0.0.0.0"
+
+		end
     end
+
     action :create
 end
-
-zookeeper_id = node['zookeeper']['myid']
 
 file "#{zookeeper_dataDir}/myid" do
 	content "#{zookeeper_id}"
