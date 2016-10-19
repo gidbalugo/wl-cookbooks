@@ -43,15 +43,15 @@ ruby_block "update myid based on private ip" do
 
 		if ouputResult == "#{node['zookeeper']['private1']}".to_s.strip
 			node.override['zookeeper']['myid'] = "#{node['zookeeper']['id1']}"
-			node.override['zookeeper']['config']['address1'] = "0.0.0.0"
+			node.override['zookeeper']['private1']  = "0.0.0.0"
 
 		elsif ouputResult == "#{node['zookeeper']['private2']}".to_s.strip
 			node.override['zookeeper']['myid'] = "#{node['zookeeper']['id2']}"
-			node.override['zookeeper']['config']['address2'] = "0.0.0.0"
+			node.override['zookeeper']['private2']  = "0.0.0.0"
 
 		elsif ouputResult == "#{node['zookeeper']['private3']}".to_s.strip
 			node.override['zookeeper']['myid'] = "#{node['zookeeper']['id3']}"
-			node.override['zookeeper']['config']['address3'] = "0.0.0.0"
+			node.override['zookeeper']['private3']  = "0.0.0.0"
 
 		end
     end
