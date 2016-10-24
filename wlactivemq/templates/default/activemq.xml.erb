@@ -76,7 +76,7 @@
         <persistenceAdapter>
             <replicatedLevelDB directory="activemq-data"
                 replicas="3"
-                bind="tcp://0.0.0.0:33450"
+                bind="tcp://0.0.0.0:61619"
                 zkAddress="<%=node['activemq']['zooKeeper']['address1']%>:<%= node['activemq']['zooKeeper']['port']%>,<%=node['activemq']['zooKeeper']['address2']%>:<%= node['activemq']['zooKeeper']['port']%>,<%=node['activemq']['zooKeeper']['address3']%>:<%= node['activemq']['zooKeeper']['port']%>"
                 hostname="<%= node['activemq']['hostname']%>"
             />
