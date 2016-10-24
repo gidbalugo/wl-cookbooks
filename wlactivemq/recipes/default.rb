@@ -37,9 +37,6 @@ link "/etc/init.d/activemq" do
   to "#{activemq_home}/bin/linux-#{arch}/activemq"
 end
 
-
-node['activemq']['hostname']
-
 ruby_block "retrieve hostname of host activemq" do
     block do
         #tricky way to load this Chef::Mixin::ShellOut utilities
